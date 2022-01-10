@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: beige;">
+
+    <div id="filter" style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top:1%;">
+
+        <img src="vue.png" alt="" style="height: 150px; width: 150px;">
+        <label style=" font-size:30px; color:#6d6e64; font-weight: 700;">Vue.js computed array filtering</label>
+        <input placeholder="please enter a car name" style=" text-align:center; border-radius: 5px; border:1px #c6c7b9 solid; padding:5px; width: 400px !important; margin-top: 6px;" type="text" v-model="findNames">
+
+        <ul>
+            <li style="font-size: 20px; list-style-type: none; color:#7e8073;" v-for="name in filteredNames">{{ name }}</li>
+        </ul>
+
+    </div>
+
+
+    <script src="vue.js"></script>
+    <script>
+
+      
+        var vm = new Vue({
+
+            el: '#filter',
+            data: {
+                findNames: '',
+                names: [
+                    'mercedes',
+                    'bmw',
+                    'jeep', 
+                    'tyota', 
+                    'lada', 
+                    'vw', 
+                    'skoda',
+                    'ford',
+                    'lexus',
+                    'audi',
+                    'daewoo',
+                    'kia',
+                    'honda',
+                    'hyundai',
+                    'nissan',
+                    'zaz',
+                    'chevrolet',
+                    'maybach',
+                    'ferrari',
+                    'bentley',
+                    'massarati',
+                    'rolls royce',
+                    'bugatti',
+                    'aston martin',
+                    'range rover',
+                    'lamborghini',
+                    'acura',
+                    'cherry'
+                ]
+            },
+
+            computed:{
+
+                filteredNames: function(){
+                    var filtering = new RegExp(this.findNames, 'i');
+
+                    return this.names.filter(function (el) {
+                        return el.match(filtering);
+                    });
+                }
+
+
+
+
+            }
+
+
+
+        })
+    </script>
+
+</body>
+</html>
